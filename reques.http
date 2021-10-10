@@ -1,0 +1,18 @@
+###
+POST http://localhost:8000/api/signup
+Content-Type: application/json
+Accept: application/json
+
+{
+    "name": "Tuan Kiet",
+    "email": "tuankiet270802@gmail.com",
+    "password": "123456"
+}
+
+###
+GET http://localhost:8000/api/verify/123456
+Content-Type: application/json
+Accept: application/json
+
+
+
