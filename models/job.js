@@ -10,7 +10,7 @@ const app = express();
 app.use(express.static("public"));
 
 //Specify the connection pathway to get us to the Database we want to connect to
-mongoose.connect("mongodb+srv://kiet:60G8xktgs2xtqVKb@cluster0.rc11m.mongodb.net/mySecondDatabase?retryWrites=true&w=majority");
+mongoose.connect("mongodb+srv://kiet:60G8xktgs2xtqVKb@cluster0.rc11m.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
 
 //Define schema
 
