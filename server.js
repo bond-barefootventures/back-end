@@ -4,6 +4,7 @@ const cors = require("cors");
 
 const app = express();
 const authRoute = require("./routes/auth");
+const jobRoute = require("./routes/job");
 
 const mongoose = require("mongoose");
 
@@ -27,7 +28,8 @@ const connectDB = async () => {
 connectDB();
 
 app.use(express.json());
-app.use("/api", authRoute);
+app.use("/api/auth", authRoute);
+app.use("/api/jobs", jobRoute);
 app.use(cors());
 
 //Middle ware

@@ -1,5 +1,5 @@
 ###
-POST http://localhost:8000/api/signup
+POST http://localhost:8000/api/auth/signup
 Content-Type: application/json
 Accept: application/json
 
@@ -10,7 +10,7 @@ Accept: application/json
 }
 
 ###
-GET http://localhost:8000/api/verify/123456
+GET http://localhost:8000/api/auth/verify/123456
 Content-Type: application/json
 Accept: application/json
 

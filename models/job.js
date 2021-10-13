@@ -3,49 +3,37 @@ const mongoose = require("mongoose");
 
 //Create new schema
 const jobSchema = new mongoose.Schema({
-  jobId: {
+  logoImageUrl: {
     type: String,
-    required: [true, "Please check your data entry, no job id specified!"],
+    required: true,
   },
   companyName: {
     type: String,
-    required: [
-      true,
-      "Please check your data entry, no company name specified!",
-    ],
+    required: true,
   },
   jobPosition: {
     type: String,
-    required: [
-      true,
-      "Please check your data entry, no job position specified!",
-    ],
+    required: true,
   },
   jobType: {
     type: String,
-    required: [true, "Please check your data entry, no job type specified!"],
+    required: true,
   },
   location: {
     type: String,
-    required: [true, "Please check your data entry, no location specified!"],
+    required: true,
   },
   salary: {
     type: Number,
-    required: [true, "Please check your data entry, no salary specified!"],
+    required: true,
   },
   jobPublishedDate: {
     type: Date,
-    required: [
-      true,
-      "Please check your data entry, no job published date specified!",
-    ],
+    required: true,
   },
   jobDescription: {
     type: String,
-    required: [
-      true,
-      "Please check your data entry, no job description specified!",
-    ],
+    required: true,
   },
 });
 
