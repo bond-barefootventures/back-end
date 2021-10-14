@@ -6,6 +6,18 @@ Accept: application/json
 {
     "name": "Tuan Kiet",
     "email": "tuankiet270802@gmail.com",
+    "role": "seeker",
+    "password": "123456"
+}
+
+
+###
+POST http://localhost:8000/api/auth/login
+Content-Type: application/json
+Accept: application/json
+
+{
+    "email": "tuankiet270802@gmail.com",
     "password": "123456"
 }
 

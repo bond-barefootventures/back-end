@@ -17,7 +17,7 @@ const sendEmail = async (receiver, token) => {
     to: receiver,
     subject: "Please verify your email",
     text: "From Bond team",
-    html: `<a href=http://localhost:8000/api/verify/${token}> 
+    html: `<a href=http://localhost:8000/api/auth/verify/${token}> 
     <h3 style="font-weight: 600"> Please click down below to confirm your email </h3>
     <button 
         style="background-color: "#185adb"; color: "#ffc947"; padding: 10px 5px; border-radius: 10px;">
@@ -48,14 +48,14 @@ const sendEmail = async (receiver, token) => {
 //Create user without email account activation
 exports.signup = async (req, res) => {
   console.log(req.body);
-  const { name, email, password } = req.body;
+  const { name, email, role, password } = req.body;
   try {
     const user = await User.findOne({ email: email });
     if (user) {
       return res.status(400).json({ success: false, message: "email exists" });
     }
     const hashedPassword = await argon2.hash(password);
-    const newUser = new User({ name, email, password: hashedPassword });
+    const newUser = new User({ name, email, role, password: hashedPassword });
     await newUser.save();
     //Return token
     const accessToken = jwt.sign(
@@ -63,15 +63,69 @@ exports.signup = async (req, res) => {
         userId: newUser._id,
         name: newUser.name,
         email: newUser.email,
+        role: newUser.role,
         password: newUser.password,
       },
       process.env.ACCESS_TOKEN_SECRET
     );
 
-    res.json({ success: true, user: newUser });
+    res.json({
+      success: true,
+      user: newUser,
+      message: "Sign Up successfully, please confirm your email",
+    });
     await sendEmail(email, accessToken);
   } catch (error) {
     console.log(error);
+  }
+};
+
+exports.login = async (req, res) => {
+  const { email, password } = req.body;
+  if (!email || !password) {
+    return res
+      .status(400)
+      .json({ success: false, message: "Missing emaiil or password" });
+  }
+
+  try {
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Incorrect email or password" });
+    }
+    //Check if password is valid
+    const passwordValid = await argon2.verify(user.password, password);
+    if (!passwordValid) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Incorrect email or password" });
+    }
+    const accessToken = jwt.sign(
+      {
+        userId: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+        password: user.password,
+      },
+      process.env.ACCESS_TOKEN_SECRET
+    );
+    if (!user.verified) {
+      sendEmail(email, accessToken);
+      return res
+        .status(400)
+        .json({ success: false, message: "Please verify your email" });
+    }
+    return res.json({
+      success: true,
+      message: "Login Succesfully",
+      token: accessToken,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ success: false, message: "Unknow" });
   }
 };
 
@@ -84,6 +138,7 @@ exports.verify = async (req, res) => {
     let updatedUser = {
       name: decoded.name,
       email: decoded.email,
+      role: decoded.role,
       password: decoded.password,
       verified: true,
     };
