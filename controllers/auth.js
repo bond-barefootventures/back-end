@@ -155,3 +155,15 @@ exports.verify = async (req, res) => {
     console.log(error);
   }
 };
+
+//Google Login/Signup Auth Routes
+app.get("/auth/google",
+  passport.authenticate("google", { scope: ["profile", "email"] })
+);
+
+app.get("/auth/google/home",
+  passport.authenticate("google", { failureRedirect: "/login" }),
+  function(req, res) {
+  //Successful authentication, redirect home.
+  res.redirect("/jobs");
+});
