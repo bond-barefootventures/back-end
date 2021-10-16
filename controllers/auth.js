@@ -156,14 +156,56 @@ exports.verify = async (req, res) => {
   }
 };
 
-//Google Login/Signup Auth Routes
-app.get("/auth/google",
-  passport.authenticate("google", { scope: ["profile", "email"] })
-);
+//Google Login Auth Routes
+const express = require("express");
+const app = express();
+const cors = require("cors");
+const bodyParser = require("body-parser");
+const passport = require("passport");
+const cookieSession = require("cookie-session");
+require("./passport-setup");
 
-app.get("/auth/google/home",
-  passport.authenticate("google", { failureRedirect: "/login" }),
+app.use(cors())
+
+// parse application/x-www.form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
+
+app.use(cookieSession({
+  name: "Barefootventures-BOND-session",
+  keys: ["key1", "key2"]
+}))
+
+const isLoggedIn = (req, res, next) => {
+  if (req.user) {
+      next();
+  } else {
+      res.sendStatus(401);
+  }
+}
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.get("/", (req, res) => res.send("home"))
+app.get("/login", (req, res) => res.send("login"))
+app.get("/good", isLoggedIn, (req, res) => res.send("jobs"))
+
+app.get("/google", passport.authenticate("google", { scope: ["profile", "email"] }));
+
+app.get("/google/jobs", passport.authenticate("google", { failureRedirect: "/login" }),
   function(req, res) {
-  //Successful authentication, redirect home.
-  res.redirect("/jobs");
-});
+    // Successful authentication, redirect to jobs listing.
+    res.redirect("/jobs");
+  });
+
+  app.get("/logout", (req, res) => {
+    req.session = null;
+    req.logout();
+    res.redirect("/");
+  });
+
+app.listen(PORT, () => console.log("Example app listening on port $(PORT)!"))
+
