@@ -6,7 +6,7 @@ Accept: application/json
 {
     "name": "Tuan Kiet",
     "email": "tuankiet270802@gmail.com",
-    "role": "seeker",
+    "role": "recruiter",
     "password": "123456"
 }
 
@@ -27,4 +27,18 @@ Content-Type: application/json
 Accept: application/json
 
 
+###
+POST http://localhost:8000/api/jobs/postJob
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTZjMjRlODc4MTU1OGM0ODA0MzY2ZjciLCJuYW1lIjoiVHVhbiBLaWV0IiwiZW1haWwiOiJ0dWFua2lldDI3MDgwMkBnbWFpbC5jb20iLCJyb2xlIjoicmVjcnVpdGVyIiwicGFzc3dvcmQiOiIkYXJnb24yaSR2PTE5JG09NDA5Nix0PTMscD0xJHVDenAvUlJyRk9sMmNhM1lYUHhPdnckTHBJYUNIUk1KR25ucmRQdlRJRy9zdUU4dGNDZk9lRTBNdGd5NVA5anJsVSIsImlhdCI6MTYzNDQ3NzQxN30.ThlrjyC8uUPefgUayT3-9dAF7ZNi-Gsipx8DaT92h-Y
 
+{
+    "logoImageUrl": "https://static.wixstatic.com/media/9f3353_68761314c4c14f19bb87217e8400fbee~mv2.jpg/v1/fill/w_331,h_166,al_c,q_80,usm_0.66_1.00_0.01/BOND_partner_Katalon2.webp",
+    "companyName": "Katalon",
+    "jobPosition": "Junior Content Creator",
+    "jobType" : "Junior",
+    "location": "District 4, Ho Chi Minh City, Vietnam",
+    "salary": "5000",
+    "jobDescription": "SaaS Marketing stands apart from your typical F&B industry with the intangibility of the product itself. In order to attract both B2C and B2B technical-favored segments, our team conceptualizes and executes go-to-market initiatives to showcase value propositions that resonate most.Utilizing common digital marketing tool stacks like Hootsuite, Ahrefs, and Google Analytics, we proactively monitor the performance of each campaign to see room for improvements, then optimize to maximize their effectiveness."
+
+}

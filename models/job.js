@@ -1,5 +1,6 @@
 //Import mongoose
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 //Create new schema
 const jobSchema = new mongoose.Schema({
@@ -24,16 +25,22 @@ const jobSchema = new mongoose.Schema({
     required: true,
   },
   salary: {
-    type: Number,
+    type: String,
     required: true,
   },
   jobPublishedDate: {
     type: Date,
-    required: true,
+    default: Date.now,
   },
   jobDescription: {
     type: String,
     required: true,
+  },
+  user: {
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: "users",
+    },
   },
 });
 
