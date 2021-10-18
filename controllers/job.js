@@ -11,20 +11,26 @@ exports.postJob = async (req, res) => {
   const {
     logoImageUrl,
     companyName,
+    companyDescription,
     jobPosition,
     jobType,
     location,
     salary,
     jobDescription,
+    jobResponsibilities,
+    jobRequests,
+    jobBenefits,
+    JDUrl,
   } = req.body;
 
   if (
     !logoImageUrl ||
     !companyName ||
+    !companyDescription ||
     !jobPosition ||
     !jobType ||
     !salary ||
-    !jobDescription
+    !JDUrl
   ) {
     return res
       .status(400)
@@ -34,11 +40,16 @@ exports.postJob = async (req, res) => {
     const newJob = new Job({
       logoImageUrl: logoImageUrl,
       companyName: companyName,
+      companyDescription: companyDescription,
       jobPosition: jobPosition,
       jobType: jobType,
       location: location,
       salary: salary,
       jobDescription: jobDescription,
+      jobResponsibilities: jobResponsibilities,
+      jobRequests: jobRequests,
+      jobBenefits: jobBenefits,
+      JDUrl: JDUrl,
       user: req.userId,
     });
 

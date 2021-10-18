@@ -12,6 +12,10 @@ const jobSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  companyDescription: {
+    type: String,
+    required: true,
+  },
   jobPosition: {
     type: String,
     required: true,
@@ -33,6 +37,18 @@ const jobSchema = new mongoose.Schema({
     default: Date.now,
   },
   jobDescription: {
+    type: String,
+  },
+  jobResponsibilities: {
+    type: [String],
+  },
+  jobRequests: {
+    type: [String],
+  },
+  jobBenefits: {
+    type: [String],
+  },
+  JDUrl: {
     type: String,
     required: true,
   },

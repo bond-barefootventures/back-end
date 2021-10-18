@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
+var bodyParser = require("body-parser");
 
 const app = express();
 const authRoute = require("./routes/auth");
@@ -11,7 +12,7 @@ const mongoose = require("mongoose");
 const connectDB = async () => {
   try {
     await mongoose.connect(
-      `mongodb+srv://kiet:60G8xktgs2xtqVKb@cluster0.rc11m.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
+      `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.rc11m.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
       (err) => {
         if (err) throw err;
         console.log("MongoDB Connected");

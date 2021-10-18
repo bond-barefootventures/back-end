@@ -30,15 +30,35 @@ Accept: application/json
 ###
 POST http://localhost:8000/api/jobs/postJob
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTZjMjRlODc4MTU1OGM0ODA0MzY2ZjciLCJuYW1lIjoiVHVhbiBLaWV0IiwiZW1haWwiOiJ0dWFua2lldDI3MDgwMkBnbWFpbC5jb20iLCJyb2xlIjoicmVjcnVpdGVyIiwicGFzc3dvcmQiOiIkYXJnb24yaSR2PTE5JG09NDA5Nix0PTMscD0xJHVDenAvUlJyRk9sMmNhM1lYUHhPdnckTHBJYUNIUk1KR25ucmRQdlRJRy9zdUU4dGNDZk9lRTBNdGd5NVA5anJsVSIsImlhdCI6MTYzNDQ3NzQxN30.ThlrjyC8uUPefgUayT3-9dAF7ZNi-Gsipx8DaT92h-Y
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTZjMjRlODc4MTU1OGM0ODA0MzY2ZjciLCJuYW1lIjoiVHVhbiBLaWV0IiwiZW1haWwiOiJ0dWFua2lldDI3MDgwMkBnbWFpbC5jb20iLCJyb2xlIjoicmVjcnVpdGVyIiwicGFzc3dvcmQiOiIkYXJnb24yaSR2PTE5JG09NDA5Nix0PTMscD0xJHVDenAvUlJyRk9sMmNhM1lYUHhPdnckTHBJYUNIUk1KR25ucmRQdlRJRy9zdUU4dGNDZk9lRTBNdGd5NVA5anJsVSIsImlhdCI6MTYzNDU2Nzc5Nn0.Nl01s1kzixgNazi0K3DrMWh8cw3A4Oc8Ph2ZdotdBZI
 
 {
     "logoImageUrl": "https://static.wixstatic.com/media/9f3353_68761314c4c14f19bb87217e8400fbee~mv2.jpg/v1/fill/w_331,h_166,al_c,q_80,usm_0.66_1.00_0.01/BOND_partner_Katalon2.webp",
     "companyName": "Katalon",
+    "companyDescription": "Aspire is the #1 business neobank in Southeast Asia",
     "jobPosition": "Junior Content Creator",
     "jobType" : "Junior",
     "location": "District 4, Ho Chi Minh City, Vietnam",
     "salary": "5000",
-    "jobDescription": "SaaS Marketing stands apart from your typical F&B industry with the intangibility of the product itself. In order to attract both B2C and B2B technical-favored segments, our team conceptualizes and executes go-to-market initiatives to showcase value propositions that resonate most.Utilizing common digital marketing tool stacks like Hootsuite, Ahrefs, and Google Analytics, we proactively monitor the performance of each campaign to see room for improvements, then optimize to maximize their effectiveness."
-
+    "jobDescription": "SaaS Marketing stands apart from your typical F&B industry with the intangibility of the product itself. In order to attract both B2C and B2B technical-favored segments, our team conceptualizes and executes go-to-market initiatives to showcase value propositions that resonate most.Utilizing common digital marketing tool stacks like Hootsuite, Ahrefs, and Google Analytics, we proactively monitor the performance of each campaign to see room for improvements, then optimize to maximize their effectiveness.",
+    "jobResponsibilities": [
+        "Support senior by communication with customer/ partner to collect documents",
+        "Compiling, verifying the accuracy, and sorting information to prepare source data for computer entry",
+        "Reviewing data for deficiencies or errors, correcting any incompatibilities, and checking output",
+        "Establish a trusted and strategic advisor relationship to help drive the continued value of our products and services",
+        "Serve as day-to-day contact for assigned accounts, building trust and rapport while identifying areas of opportunity, highlighting best practices, and documenting them",
+        "Communicate effectively with both internal and external senior-level management to understand customer needs, maximize retention and growth, and communicate learnings",
+        "Maintain existing customer success metrics and data as directed",
+        "Shadow multiple office positions and train in a variety of tasks",
+        "Other tasks to support company requirement"
+    ],
+    "jobRequests":[
+        "Bachelor degree or undergraduate in Finance, Business Administration, Economics are a plus",
+        "Fast-paced, smart, reliable, proactive. Self-starter and eager to learn.",
+        "Prior professional experience is a plus.",
+        "Positive attitude and self-motivated",
+        "Analytical, with strong communication skills, and the ability to operate with flexibility in a fast-paced, constantly evolving, and collaborative environment",
+        "Ability to speak fluently in both Vietnamese and English, as the role requires the incumbent to interact and communicate with Vietnamese-speaking clients"
+    ],
+    "JDUrl": "https://drive.google.com/file/d/1jpdjOhS5XGlpegGAyi0YRNsxZZbvKhVN/view"
 }
